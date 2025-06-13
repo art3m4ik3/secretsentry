@@ -1,0 +1,29 @@
+name: Secret Scanner
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  scan:
+    name: Scan for secrets
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Scan for secrets
+      uses: art3m4ik3/secretsentry@v1
+      with:
+        path: '.'
+        git-history: 'true'
+        max-commits: '100'
+        severity: 'medium'
+        verbose: 'true'

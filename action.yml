@@ -1,0 +1,33 @@
+name: "SecretSentry Action"
+description: "Scan the repository for leaked secrets"
+author: "SecretSentry"
+
+branding:
+  icon: "shield"
+  color: "red"
+
+inputs:
+  path:
+    description: "Path to scan"
+    required: false
+    default: "."
+  git-history:
+    description: "Scan Git history"
+    required: false
+    default: "false"
+  max-commits:
+    description: "Maximum number of commits to scan"
+    required: false
+    default: "50"
+  severity:
+    description: "Minimum severity level (low, medium, high)"
+    required: false
+    default: "medium"
+  verbose:
+    description: "Show detailed information"
+    required: false
+    default: "true"
+
+runs:
+  using: "node20"
+  main: "action/dist/index.js"

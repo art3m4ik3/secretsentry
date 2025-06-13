@@ -1,0 +1,66 @@
+{
+  "name": "secretsentry",
+  "version": "1.0.0",
+  "description": "A tool for finding leaked secrets in the code",
+  "main": "dist/index.js",
+  "bin": {
+    "secretsentry": "dist/index.js"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir dist --target node --minify",
+    "build:action": "cd action && bun install && bun run build",
+    "build:all": "bun run build && bun run build:action",
+    "start": "bun run dist/index.js",
+    "dev": "bun run src/index.ts",
+    "test": "bun test",
+    "prepublishOnly": "bun run build:all"
+  },
+  "keywords": [
+    "security",
+    "secrets",
+    "passwords",
+    "tokens",
+    "api-keys",
+    "leak",
+    "git",
+    "scanner",
+    "devsecops",
+    "secret-scanning",
+    "static-analysis",
+    "code-quality",
+    "security-tools",
+    "github-actions",
+    "ci-cd"
+  ],
+  "author": "art3m4ik3",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^24.0.1",
+    "bun-types": "latest"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "glob": "^11.0.3",
+    "simple-git": "^3.28.0"
+  },
+  "type": "module",
+  "private": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/art3m4ik3/secretsentry.git"
+  },
+  "homepage": "https://github.com/art3m4ik3/secretsentry#readme",
+  "bugs": {
+    "url": "https://github.com/art3m4ik3/secretsentry/issues"
+  }
+}
