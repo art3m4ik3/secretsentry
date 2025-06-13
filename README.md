@@ -97,7 +97,7 @@ jobs:
           fetch-depth: 0
 
       - name: Scan for secrets
-        uses: art3m4ik3/secretsentry@v1
+        uses: art3m4ik3/secretsentry@1.0.1
         with:
           path: "."
           git-history: "true"
